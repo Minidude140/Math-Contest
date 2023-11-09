@@ -12,6 +12,11 @@
 '[~]only message user once
 '[]clear and focus offending text boxes
 
+'questions
+'getting blank msgbox when all fields correct
+'activate/deactivae buttons when fields are filled
+
+
 Public Class MathContestForm
     'Custom Methods
 
