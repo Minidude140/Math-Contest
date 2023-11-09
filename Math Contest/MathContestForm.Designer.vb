@@ -23,12 +23,12 @@ Partial Class MathContestForm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.StudentInfoGroupBox = New System.Windows.Forms.GroupBox()
-        Me.GradeLabel = New System.Windows.Forms.Label()
-        Me.AgeLabel = New System.Windows.Forms.Label()
-        Me.NameLabel = New System.Windows.Forms.Label()
-        Me.GradeTextBox = New System.Windows.Forms.TextBox()
-        Me.AgeTextBox = New System.Windows.Forms.TextBox()
         Me.StudentNameTextBox = New System.Windows.Forms.TextBox()
+        Me.NameLabel = New System.Windows.Forms.Label()
+        Me.AgeTextBox = New System.Windows.Forms.TextBox()
+        Me.AgeLabel = New System.Windows.Forms.Label()
+        Me.GradeTextBox = New System.Windows.Forms.TextBox()
+        Me.GradeLabel = New System.Windows.Forms.Label()
         Me.CurrentMathProblemGroupBox = New System.Windows.Forms.GroupBox()
         Me.StudentResponseLabel = New System.Windows.Forms.Label()
         Me.SecondNumberLabel = New System.Windows.Forms.Label()
@@ -67,23 +67,12 @@ Partial Class MathContestForm
         Me.StudentInfoGroupBox.TabStop = False
         Me.StudentInfoGroupBox.Text = "Student Information"
         '
-        'GradeLabel
+        'StudentNameTextBox
         '
-        Me.GradeLabel.AutoSize = True
-        Me.GradeLabel.Location = New System.Drawing.Point(406, 27)
-        Me.GradeLabel.Name = "GradeLabel"
-        Me.GradeLabel.Size = New System.Drawing.Size(48, 17)
-        Me.GradeLabel.TabIndex = 5
-        Me.GradeLabel.Text = "Grade"
-        '
-        'AgeLabel
-        '
-        Me.AgeLabel.AutoSize = True
-        Me.AgeLabel.Location = New System.Drawing.Point(343, 27)
-        Me.AgeLabel.Name = "AgeLabel"
-        Me.AgeLabel.Size = New System.Drawing.Size(33, 17)
-        Me.AgeLabel.TabIndex = 4
-        Me.AgeLabel.Text = "Age"
+        Me.StudentNameTextBox.Location = New System.Drawing.Point(23, 49)
+        Me.StudentNameTextBox.Name = "StudentNameTextBox"
+        Me.StudentNameTextBox.Size = New System.Drawing.Size(261, 22)
+        Me.StudentNameTextBox.TabIndex = 0
         '
         'NameLabel
         '
@@ -94,13 +83,6 @@ Partial Class MathContestForm
         Me.NameLabel.TabIndex = 3
         Me.NameLabel.Text = "Name"
         '
-        'GradeTextBox
-        '
-        Me.GradeTextBox.Location = New System.Drawing.Point(409, 47)
-        Me.GradeTextBox.Name = "GradeTextBox"
-        Me.GradeTextBox.Size = New System.Drawing.Size(41, 22)
-        Me.GradeTextBox.TabIndex = 2
-        '
         'AgeTextBox
         '
         Me.AgeTextBox.Location = New System.Drawing.Point(339, 47)
@@ -108,12 +90,30 @@ Partial Class MathContestForm
         Me.AgeTextBox.Size = New System.Drawing.Size(41, 22)
         Me.AgeTextBox.TabIndex = 1
         '
-        'StudentNameTextBox
+        'AgeLabel
         '
-        Me.StudentNameTextBox.Location = New System.Drawing.Point(23, 49)
-        Me.StudentNameTextBox.Name = "StudentNameTextBox"
-        Me.StudentNameTextBox.Size = New System.Drawing.Size(261, 22)
-        Me.StudentNameTextBox.TabIndex = 0
+        Me.AgeLabel.AutoSize = True
+        Me.AgeLabel.Location = New System.Drawing.Point(343, 27)
+        Me.AgeLabel.Name = "AgeLabel"
+        Me.AgeLabel.Size = New System.Drawing.Size(33, 17)
+        Me.AgeLabel.TabIndex = 4
+        Me.AgeLabel.Text = "Age"
+        '
+        'GradeTextBox
+        '
+        Me.GradeTextBox.Location = New System.Drawing.Point(409, 47)
+        Me.GradeTextBox.Name = "GradeTextBox"
+        Me.GradeTextBox.Size = New System.Drawing.Size(41, 22)
+        Me.GradeTextBox.TabIndex = 2
+        '
+        'GradeLabel
+        '
+        Me.GradeLabel.AutoSize = True
+        Me.GradeLabel.Location = New System.Drawing.Point(406, 27)
+        Me.GradeLabel.Name = "GradeLabel"
+        Me.GradeLabel.Size = New System.Drawing.Size(48, 17)
+        Me.GradeLabel.TabIndex = 5
+        Me.GradeLabel.Text = "Grade"
         '
         'CurrentMathProblemGroupBox
         '
@@ -262,6 +262,7 @@ Partial Class MathContestForm
         '
         'ClearButton
         '
+        Me.ClearButton.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.ClearButton.Location = New System.Drawing.Point(26, 118)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(189, 80)
@@ -292,6 +293,7 @@ Partial Class MathContestForm
         Me.AcceptButton = Me.SubmitButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.ClearButton
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.ButtonGroupBox)
         Me.Controls.Add(Me.MathProblemTypeGroupBox)
