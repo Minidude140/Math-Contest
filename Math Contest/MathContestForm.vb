@@ -43,11 +43,10 @@ Public Class MathContestForm
                 errorMessage &= Replace($"{item.Name.ToString} is required{vbCrLf}", "TextBox", "")
             End If
         Next
-        If AgeAndGradeCheck() = False Then
-            MsgBox("Student is not eligible to compete")
-        End If
 
-        MsgBox(errorMessage)
+        If errorMessage <> "" Then
+            MsgBox(errorMessage)
+        End If
         Return isvalid
     End Function
 
@@ -88,6 +87,9 @@ Public Class MathContestForm
             'not a number
             MsgBox("not a number")
         End Try
+        If validAgeAndGrade = False Then
+            MsgBox("Student is not eligible to compete")
+        End If
         Return validAgeAndGrade
     End Function
 
@@ -133,7 +135,11 @@ Public Class MathContestForm
     End Sub
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
-        ValidateUserInputs()
+        If ValidateUserInputs() Then
+            If AgeAndGradeCheck() Then
+                'start contest
+            End If
+        End If
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
