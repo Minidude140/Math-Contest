@@ -10,11 +10,16 @@
 '[~]age 7-11
 '[~]grade 1-4
 '[~]only message user once
-'[]clear and focus offending text boxes
+'[~1/2]clear and focus offending text boxes
+'[]Separate 'not a number' exceptions into separate age and grade (set focus and clear)
+'[]Add tool tips and hot keys
 
 'questions
+'list box clone/fork/copy how to do
 'getting blank msgbox when all fields correct
-'activate/deactivate buttons when fields are filled
+'activate/deactivate buttons when fields are filled? ... submit for teacher and students?
+'custom message box? at least custom title on box
+'can I change teachers submit button to a begin button and run the students questioning in its own form with a submit button
 
 Public Class MathContestForm
     'Custom Methods
@@ -58,20 +63,24 @@ Public Class MathContestForm
             'check if age or grade are numbers
             age = CInt(AgeTextBox.Text)
             grade = CInt(GradeTextBox.Text)
-            'check if age is in range
-            Select Case age
-                Case 7 To 11
-                    'age is in range 
-                    'MsgBox("Age is in range")
-                Case Else
-                    validAgeAndGrade = False
-            End Select
             'check if grade is in range
             Select Case grade
                 Case 1 To 4
                     'grade is in range
                     'MsgBox("Grade is in range")
                 Case Else
+                    GradeTextBox.Text = ""
+                    GradeTextBox.Focus()
+                    validAgeAndGrade = False
+            End Select
+            'check if age is in range
+            Select Case age
+                Case 7 To 11
+                    'age is in range 
+                    'MsgBox("Age is in range")
+                Case Else
+                    AgeTextBox.Text = ""
+                    AgeTextBox.Focus()
                     validAgeAndGrade = False
             End Select
         Catch ex As Exception
