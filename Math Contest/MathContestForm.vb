@@ -102,17 +102,32 @@ Public Class MathContestForm
         End If
     End Sub
 
+    ''' <summary>
+    ''' sets default text boxes and buttons
+    ''' </summary>
+    Sub SetDefaults()
+        AddRadioButton.Checked = True
+        StudentNameTextBox.Text = ""
+        AgeTextBox.Text = ""
+        GradeTextBox.Text = ""
+        StudentResponseTextBox.Text = ""
+    End Sub
+
     'Event Handlers
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
         Me.Close()
     End Sub
 
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
-        AddRadioButton.Checked = True
+        SetDefaults()
         EnableControls(False)
     End Sub
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         ValidateUserInputs()
+    End Sub
+
+    Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
+        SetDefaults()
     End Sub
 End Class
