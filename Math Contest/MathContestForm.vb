@@ -14,14 +14,13 @@
 
 'questions
 'getting blank msgbox when all fields correct
-'activate/deactivae buttons when fields are filled
-
+'activate/deactivate buttons when fields are filled
 
 Public Class MathContestForm
     'Custom Methods
 
     ''' <summary>
-    ''' Checks if Name, Age, and Grade have been entered
+    ''' Checks if Name, Age, and Grade have been entered properly
     ''' </summary>
     ''' <param name="message"></param>
     ''' <returns></returns>
@@ -47,6 +46,10 @@ Public Class MathContestForm
         Return isvalid
     End Function
 
+    ''' <summary>
+    ''' Checks if Age and Grade text box contents are numbers and in range
+    ''' </summary>
+    ''' <returns></returns>
     Private Function AgeAndGradeCheck() As Boolean
         Dim age As Integer
         Dim grade As Integer
@@ -79,6 +82,26 @@ Public Class MathContestForm
         Return validAgeAndGrade
     End Function
 
+    ''' <summary>
+    ''' enables or disable various user controls
+    ''' </summary>
+    ''' <param name="activate"></param>
+    Sub EnableControls(activate As Boolean)
+        If activate Then
+            AddRadioButton.Enabled = True
+            SubtractRadioButton.Enabled = True
+            MultiplyRadioButton.Enabled = True
+            DivideRadioButton.Enabled = True
+            SummaryButton.Enabled = True
+        Else
+            AddRadioButton.Enabled = False
+            SubtractRadioButton.Enabled = False
+            MultiplyRadioButton.Enabled = False
+            DivideRadioButton.Enabled = False
+            SummaryButton.Enabled = False
+        End If
+    End Sub
+
     'Event Handlers
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
         Me.Close()
@@ -86,6 +109,7 @@ Public Class MathContestForm
 
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         AddRadioButton.Checked = True
+        EnableControls(False)
     End Sub
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
