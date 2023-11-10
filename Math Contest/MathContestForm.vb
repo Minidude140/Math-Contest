@@ -12,7 +12,10 @@
 '[~]only message user once
 '[~1/2]clear and focus offending text boxes
 '[~]Separate 'not a number' exceptions into separate age and grade (set focus and clear)
-'[]Add tool tips and hot keys
+'[~]Add tool tips and hot keys
+'[]Generate Two Random number sub
+'[]Re Generate new numbers when: StartButton Clicked, SubmitButton Clicked, New Operator selected
+'[]Clear math problem numbers when setdefaults
 
 
 Public Class MathContestForm
