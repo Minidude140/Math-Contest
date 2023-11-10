@@ -11,7 +11,7 @@
 '[~]grade 1-4
 '[~]only message user once
 '[~1/2]clear and focus offending text boxes
-'[]Separate 'not a number' exceptions into separate age and grade (set focus and clear)
+'[~]Separate 'not a number' exceptions into separate age and grade (set focus and clear)
 '[]Add tool tips and hot keys
 
 
@@ -25,7 +25,7 @@ Public Class MathContestForm
     ''' <returns></returns>
     Private Function ValidateUserInputs(Optional ByRef message As String = "")
         Dim isvalid As Boolean = True
-        Dim errorMessage As String
+        Dim errorMessage As String = ""
 
         'Checks if each entered text box has a value
         For Each item As TextBox In StudentInfoGroupBox.Controls.OfType(Of TextBox)
@@ -52,37 +52,47 @@ Public Class MathContestForm
         Dim age As Integer
         Dim grade As Integer
         Dim validAgeAndGrade As Boolean = True
+        Dim ageAndGradeErrorMessage As String = ""
         Try
-            'check if age or grade are numbers
-            age = CInt(AgeTextBox.Text)
+            'check if grade is a number
             grade = CInt(GradeTextBox.Text)
             'check if grade is in range
             Select Case grade
                 Case 1 To 4
                     'grade is in range
-                    'MsgBox("Grade is in range")
                 Case Else
                     GradeTextBox.Text = ""
                     GradeTextBox.Focus()
+                    ageAndGradeErrorMessage = "Grade must between 1 and 4." & vbCrLf
                     validAgeAndGrade = False
             End Select
+        Catch ex As Exception
+            'grade not a number
+            validAgeAndGrade = False
+            GradeTextBox.Focus()
+            ageAndGradeErrorMessage = "Grade must be a whole Number." & vbCrLf
+        End Try
+        Try
+            'check if age is a number
+            age = CInt(AgeTextBox.Text)
             'check if age is in range
             Select Case age
                 Case 7 To 11
                     'age is in range 
-                    'MsgBox("Age is in range")
                 Case Else
                     AgeTextBox.Text = ""
                     AgeTextBox.Focus()
+                    ageAndGradeErrorMessage &= "Age must be between 7 and 11." & vbCrLf
                     validAgeAndGrade = False
             End Select
         Catch ex As Exception
-            'validAgeAndGrade = False
-            'not a number
-            MsgBox("not a number")
+            'age not a number
+            validAgeAndGrade = False
+            AgeTextBox.Focus()
+            ageAndGradeErrorMessage &= "Age must be a whole number." & vbCrLf
         End Try
         If validAgeAndGrade = False Then
-            MsgBox("Student is not eligible to compete")
+            MsgBox("Student is not eligible to compete" & vbCrLf & ageAndGradeErrorMessage)
         End If
         Return validAgeAndGrade
     End Function
@@ -121,13 +131,13 @@ Public Class MathContestForm
     End Sub
 
     'Event Handlers
-    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
-        Me.Close()
-    End Sub
-
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
         EnableContestControls(False)
+    End Sub
+
+    Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
+        Me.Close()
     End Sub
 
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
