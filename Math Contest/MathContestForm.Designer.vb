@@ -44,8 +44,9 @@ Partial Class MathContestForm
         Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
         Me.SummaryButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
-        Me.SubmitButton = New System.Windows.Forms.Button()
+        Me.StartButton = New System.Windows.Forms.Button()
         Me.ExitButton = New System.Windows.Forms.Button()
+        Me.SubmitButton = New System.Windows.Forms.Button()
         Me.StudentInfoGroupBox.SuspendLayout()
         Me.CurrentMathProblemGroupBox.SuspendLayout()
         Me.MathProblemTypeGroupBox.SuspendLayout()
@@ -117,6 +118,7 @@ Partial Class MathContestForm
         '
         'CurrentMathProblemGroupBox
         '
+        Me.CurrentMathProblemGroupBox.Controls.Add(Me.SubmitButton)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.StudentResponseLabel)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.SecondNumberLabel)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.FirstNumberLabel)
@@ -133,7 +135,7 @@ Partial Class MathContestForm
         'StudentResponseLabel
         '
         Me.StudentResponseLabel.AutoSize = True
-        Me.StudentResponseLabel.Location = New System.Drawing.Point(15, 198)
+        Me.StudentResponseLabel.Location = New System.Drawing.Point(13, 166)
         Me.StudentResponseLabel.Name = "StudentResponseLabel"
         Me.StudentResponseLabel.Size = New System.Drawing.Size(125, 17)
         Me.StudentResponseLabel.TabIndex = 5
@@ -159,7 +161,7 @@ Partial Class MathContestForm
         '
         'StudentResponseTextBox
         '
-        Me.StudentResponseTextBox.Location = New System.Drawing.Point(18, 218)
+        Me.StudentResponseTextBox.Location = New System.Drawing.Point(18, 186)
         Me.StudentResponseTextBox.Name = "StudentResponseTextBox"
         Me.StudentResponseTextBox.Size = New System.Drawing.Size(277, 22)
         Me.StudentResponseTextBox.TabIndex = 2
@@ -243,7 +245,7 @@ Partial Class MathContestForm
         '
         Me.ButtonGroupBox.Controls.Add(Me.SummaryButton)
         Me.ButtonGroupBox.Controls.Add(Me.ClearButton)
-        Me.ButtonGroupBox.Controls.Add(Me.SubmitButton)
+        Me.ButtonGroupBox.Controls.Add(Me.StartButton)
         Me.ButtonGroupBox.Controls.Add(Me.ExitButton)
         Me.ButtonGroupBox.Location = New System.Drawing.Point(551, 26)
         Me.ButtonGroupBox.Name = "ButtonGroupBox"
@@ -270,14 +272,14 @@ Partial Class MathContestForm
         Me.ClearButton.Text = "Clear"
         Me.ClearButton.UseVisualStyleBackColor = True
         '
-        'SubmitButton
+        'StartButton
         '
-        Me.SubmitButton.Location = New System.Drawing.Point(26, 32)
-        Me.SubmitButton.Name = "SubmitButton"
-        Me.SubmitButton.Size = New System.Drawing.Size(189, 80)
-        Me.SubmitButton.TabIndex = 0
-        Me.SubmitButton.Text = "Submit"
-        Me.SubmitButton.UseVisualStyleBackColor = True
+        Me.StartButton.Location = New System.Drawing.Point(26, 32)
+        Me.StartButton.Name = "StartButton"
+        Me.StartButton.Size = New System.Drawing.Size(189, 80)
+        Me.StartButton.TabIndex = 0
+        Me.StartButton.Text = "Start"
+        Me.StartButton.UseVisualStyleBackColor = True
         '
         'ExitButton
         '
@@ -288,9 +290,18 @@ Partial Class MathContestForm
         Me.ExitButton.Text = "Exit"
         Me.ExitButton.UseVisualStyleBackColor = True
         '
+        'SubmitButton
+        '
+        Me.SubmitButton.Location = New System.Drawing.Point(16, 234)
+        Me.SubmitButton.Name = "SubmitButton"
+        Me.SubmitButton.Size = New System.Drawing.Size(278, 39)
+        Me.SubmitButton.TabIndex = 6
+        Me.SubmitButton.Text = "Submit"
+        Me.SubmitButton.UseVisualStyleBackColor = True
+        '
         'MathContestForm
         '
-        Me.AcceptButton = Me.SubmitButton
+        Me.AcceptButton = Me.StartButton
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.ClearButton
@@ -336,6 +347,7 @@ Partial Class MathContestForm
     Friend WithEvents ButtonGroupBox As GroupBox
     Friend WithEvents SummaryButton As Button
     Friend WithEvents ClearButton As Button
-    Friend WithEvents SubmitButton As Button
+    Friend WithEvents StartButton As Button
     Friend WithEvents ExitButton As Button
+    Friend WithEvents SubmitButton As Button
 End Class
