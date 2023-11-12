@@ -13,9 +13,9 @@
 '[~1/2]clear and focus offending text boxes
 '[~]Separate 'not a number' exceptions into separate age and grade (set focus and clear)
 '[~]Add tool tips and hot keys
-'[]Generate Two Random number sub
-'[]Re Generate new numbers when: StartButton Clicked, SubmitButton Clicked, New Operator selected
-'[]Clear math problem numbers when setdefaults
+'[~]Generate Two Random number sub
+'[~]Clear math problem numbers when setdefaults
+'[]Re Generate new numbers when: ~StartButton Clicked, SubmitButton Clicked, New Operator selected
 
 
 Public Class MathContestForm
@@ -131,6 +131,30 @@ Public Class MathContestForm
         AgeTextBox.Text = ""
         GradeTextBox.Text = ""
         StudentResponseTextBox.Text = ""
+        FirstNumberTextBox.Text = ""
+        SecondNumberTextBox.Text = ""
+    End Sub
+
+    ''' <summary>
+    ''' returns random number optional max default of 100
+    ''' </summary>
+    ''' <returns></returns>
+    Function RandomNumber(Optional max As Integer = 100) As Integer
+        Dim number As Integer
+        Randomize(DateTime.Now.Millisecond * DateTime.Now.Second)
+        number = Rnd() * max
+        Return number
+    End Function
+
+    ''' <summary>
+    ''' Generates two new numbers for the question
+    ''' </summary>
+    Sub PopulateStudentQuestion()
+        Dim firstNumber As Integer = RandomNumber()
+        Dim secondNumber As Integer = RandomNumber()
+
+        FirstNumberTextBox.Text = firstNumber
+        SecondNumberTextBox.Text = secondNumber
     End Sub
 
     'Event Handlers
@@ -148,6 +172,7 @@ Public Class MathContestForm
             If AgeAndGradeCheck() Then
                 EnableContestControls(True)
                 'start contest
+                PopulateStudentQuestion()
             End If
         End If
     End Sub
