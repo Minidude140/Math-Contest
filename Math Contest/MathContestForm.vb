@@ -15,7 +15,11 @@
 '[~]Add tool tips and hot keys
 '[~]Generate Two Random number sub
 '[~]Clear math problem numbers when setdefaults
-'[]Re Generate new numbers when: ~StartButton Clicked, SubmitButton Clicked, New Operator selected
+'[]Re Generate new numbers when: ~StartButton Clicked, SubmitButton Clicked, ~New Operator selected
+'[]submit button handler should:
+'[]solve problem compare to student response
+'[]message user their result
+'[]keep track of number of questions and correct responses
 
 
 Public Class MathContestForm
@@ -180,5 +184,21 @@ Public Class MathContestForm
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
         SetDefaults()
         EnableContestControls(False)
+    End Sub
+
+    Private Sub AddRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged
+        PopulateStudentQuestion()
+    End Sub
+
+    Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
+        PopulateStudentQuestion()
+    End Sub
+
+    Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
+        PopulateStudentQuestion()
+    End Sub
+
+    Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
+        PopulateStudentQuestion()
     End Sub
 End Class
