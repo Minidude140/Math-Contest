@@ -15,10 +15,11 @@
 '[~]Add tool tips and hot keys
 '[~]Generate Two Random number sub
 '[~]Clear math problem numbers when setdefaults
-'[]Re Generate new numbers when: ~StartButton Clicked, SubmitButton Clicked, ~New Operator selected
+'[~]Re Generate new numbers when: ~StartButton Clicked, ~SubmitButton Clicked, ~New Operator selected
 '[]submit button handler should:
-'[]solve problem compare to student response
-'[]message user their result
+'[]solve problem compare to student response --> 
+'[]*add, subtract, multiply, divide functions
+'[]*message user their result
 '[]keep track of number of questions and correct responses
 
 
@@ -161,6 +162,49 @@ Public Class MathContestForm
         SecondNumberTextBox.Text = secondNumber
     End Sub
 
+    ''' <summary>
+    ''' Returns the sum of two integers
+    ''' </summary>
+    ''' <param name="first"></param>
+    ''' <param name="second"></param>
+    ''' <returns></returns>
+    Function AddTwoNumbers(first As Integer, second As Integer)
+        Dim sum As Integer
+        sum = first + second
+        Return sum
+    End Function
+
+    ''' <summary>
+    ''' Checks is the student's response is correct returns true if yes **ONlY ADDS RIGHT NOW**
+    ''' </summary>
+    ''' <returns></returns>
+    Function CheckStudentResponse() As Boolean
+        Dim currentFirstNumber As Integer
+        Dim currentSecondNumber As Integer
+        Dim correctResponse As Integer
+        Dim studentResponse As Integer
+        Dim studentCorrect As Boolean
+
+        'sets the first and second numbers
+        currentFirstNumber = CInt(Me.FirstNumberTextBox.Text)
+        currentSecondNumber = CInt(Me.SecondNumberTextBox.Text)
+
+        'try to convert student response
+        Try
+            studentResponse = CInt(Me.StudentResponseTextBox.Text)
+        Catch ex As Exception
+            MsgBox("Response not a number")
+        End Try
+
+        correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
+        If correctResponse = studentResponse Then
+            studentCorrect = True
+        Else
+            studentCorrect = False
+        End If
+        Return studentCorrect
+    End Function
+
     'Event Handlers
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
@@ -199,6 +243,16 @@ Public Class MathContestForm
     End Sub
 
     Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
+        PopulateStudentQuestion()
+    End Sub
+
+    Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
+        If CheckStudentResponse() Then
+            MsgBox("Correct!")
+        Else
+            MsgBox("Nope!")
+        End If
+
         PopulateStudentQuestion()
     End Sub
 End Class
