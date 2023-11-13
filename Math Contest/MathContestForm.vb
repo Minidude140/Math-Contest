@@ -24,6 +24,8 @@
 
 
 Public Class MathContestForm
+    Dim mathoperation As String
+
     'Custom Methods
 
     ''' <summary>
@@ -183,6 +185,7 @@ Public Class MathContestForm
     Function SubtractTwoNumbers(first As Integer, second As Integer) As Integer
         Dim difference As Integer
         difference = first - second
+        Return difference
     End Function
 
     ''' <summary>
@@ -204,7 +207,14 @@ Public Class MathContestForm
         'try to convert student response
         Try
             studentResponse = CInt(Me.StudentResponseTextBox.Text)
-            correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
+            Select Case mathoperation
+                Case = "+"
+                    correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
+                Case = "-"
+                    correctResponse = SubtractTwoNumbers(currentFirstNumber, currentSecondNumber)
+            End Select
+
+
             If correctResponse = studentResponse Then
                 studentCorrect = True
                 returnMessage = "Correct!"
@@ -247,10 +257,12 @@ Public Class MathContestForm
 
     Private Sub AddRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged
         PopulateStudentQuestion()
+        mathoperation = "+"
     End Sub
 
     Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
         PopulateStudentQuestion()
+        mathoperation = "-"
     End Sub
 
     Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
