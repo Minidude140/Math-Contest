@@ -199,6 +199,30 @@ Public Class MathContestForm
     End Function
 
     ''' <summary>
+    ''' Returns the Product of two Double Points
+    ''' </summary>
+    ''' <param name="first"></param>
+    ''' <param name="second"></param>
+    ''' <returns></returns>
+    Function MultiplyTwoNumbers(first As Double, second As Double) As Double
+        Dim product As Double
+        product = first * second
+        Return product
+    End Function
+
+    ''' <summary>
+    ''' Returns the Quotient of two Double Points
+    ''' </summary>
+    ''' <param name="first"></param>
+    ''' <param name="second"></param>
+    ''' <returns></returns>
+    Function DivideTwoNumbers(first As Double, second As Double) As Double
+        Dim quotient As Double
+        quotient = first / second
+        Return quotient
+    End Function
+
+    ''' <summary>
     ''' Checks is the student's response is correct returns true if yes **ONlY ADDS RIGHT NOW**
     ''' </summary>
     ''' <returns></returns>
