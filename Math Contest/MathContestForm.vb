@@ -168,10 +168,21 @@ Public Class MathContestForm
     ''' <param name="first"></param>
     ''' <param name="second"></param>
     ''' <returns></returns>
-    Function AddTwoNumbers(first As Integer, second As Integer)
+    Function AddTwoNumbers(first As Integer, second As Integer) As Integer
         Dim sum As Integer
         sum = first + second
         Return sum
+    End Function
+
+    ''' <summary>
+    ''' Returns the difference of two integers
+    ''' </summary>
+    ''' <param name="first"></param>
+    ''' <param name="second"></param>
+    ''' <returns></returns>
+    Function SubtractTwoNumbers(first As Integer, second As Integer) As Integer
+        Dim difference As Integer
+        difference = first - second
     End Function
 
     ''' <summary>
@@ -184,6 +195,7 @@ Public Class MathContestForm
         Dim correctResponse As Integer
         Dim studentResponse As Integer
         Dim studentCorrect As Boolean
+        Dim returnMessage As String = ""
 
         'sets the first and second numbers
         currentFirstNumber = CInt(Me.FirstNumberTextBox.Text)
@@ -192,16 +204,19 @@ Public Class MathContestForm
         'try to convert student response
         Try
             studentResponse = CInt(Me.StudentResponseTextBox.Text)
+            correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
+            If correctResponse = studentResponse Then
+                studentCorrect = True
+                returnMessage = "Correct!"
+            Else
+                studentCorrect = False
+                returnMessage = "Nope!"
+            End If
         Catch ex As Exception
-            MsgBox("Response not a number")
+            returnMessage = "Please enter a Whole Number"
         End Try
 
-        correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
-        If correctResponse = studentResponse Then
-            studentCorrect = True
-        Else
-            studentCorrect = False
-        End If
+        MsgBox(returnMessage)
         Return studentCorrect
     End Function
 
@@ -248,9 +263,9 @@ Public Class MathContestForm
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         If CheckStudentResponse() Then
-            MsgBox("Correct!")
+            'MsgBox("Correct!")
         Else
-            MsgBox("Nope!")
+            'MsgBox("Nope!")
         End If
 
         PopulateStudentQuestion()
