@@ -224,10 +224,13 @@ Public Class MathContestForm
                 studentCorrect = True
                 returnMessage = "Correct!" & vbCrLf &
                     $"{currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}"
+                numberOfCorrectAnswers += 1
+                totalNumberofQuestions += 1
             Else
                 studentCorrect = False
                 returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}" &
-                     vbCrLf & $"Your response: {studentResponse}"
+                vbCrLf & $"Your response: {studentResponse}"
+                totalNumberofQuestions += 1
             End If
         Catch ex As Exception
             returnMessage = "Please enter a Whole Number"
@@ -291,10 +294,7 @@ Public Class MathContestForm
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         If CheckStudentResponse() Then
-            numberOfCorrectAnswers += 1
-            totalNumberofQuestions += 1
         Else
-            totalNumberofQuestions += 1
         End If
 
         PopulateStudentQuestion()
