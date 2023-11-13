@@ -251,6 +251,7 @@ Public Class MathContestForm
                     correctResponse = MultiplyTwoNumbers(currentFirstNumber, currentSecondNumber)
                 Case = "/"
                     'need to convert to doubles to deal with decimal
+
             End Select
 
             'check if student answered correctly and answer accordingly
