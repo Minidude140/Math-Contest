@@ -18,8 +18,8 @@
 '[~]Re Generate new numbers when: ~StartButton Clicked, ~SubmitButton Clicked, ~New Operator selected
 '[]submit button handler should:
 '[]solve problem compare to student response --> 
-'[]*add, subtract, multiply, divide functions
-'[]*message user their result
+'[]*add, *subtract, multiply, divide functions
+'[*]message user their result
 '[]keep track of number of questions and correct responses
 
 
@@ -220,7 +220,8 @@ Public Class MathContestForm
                 returnMessage = "Correct!"
             Else
                 studentCorrect = False
-                returnMessage = "Nope!"
+                returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}" &
+                     vbCrLf & $"Your response: {studentResponse}"
             End If
         Catch ex As Exception
             returnMessage = "Please enter a Whole Number"
