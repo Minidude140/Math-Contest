@@ -18,7 +18,7 @@
 '[~]Re Generate new numbers when: ~StartButton Clicked, ~SubmitButton Clicked, ~New Operator selected
 '[]submit button handler should:
 '[]solve problem compare to student response --> 
-'[]*add, *subtract, multiply, divide functions
+'[]*add, *subtract, *multiply, divide functions
 '[*]message user their result
 '[*]keep track of number of questions and correct responses
 
@@ -249,6 +249,8 @@ Public Class MathContestForm
                     correctResponse = SubtractTwoNumbers(currentFirstNumber, currentSecondNumber)
                 Case = "*"
                     correctResponse = MultiplyTwoNumbers(currentFirstNumber, currentSecondNumber)
+                Case = "/"
+                    'need to convert to doubles to deal with decimal
             End Select
 
             'check if student answered correctly and answer accordingly
