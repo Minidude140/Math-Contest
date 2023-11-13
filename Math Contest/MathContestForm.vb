@@ -2,7 +2,7 @@
 'RCET 2265
 'Fall 2023
 'Math Contest
-'git link
+'https://github.com/Minidude140/Math-Contest.git
 
 'TODO
 '[~]need to check that grade and age are within range
@@ -49,7 +49,7 @@ Public Class MathContestForm
                 errorMessage &= Replace($"{item.Name.ToString} is required{vbCrLf}", "TextBox", "")
             End If
         Next
-
+        'message the user if an error has occurred
         If errorMessage <> "" Then
             MsgBox(errorMessage)
         End If
@@ -103,6 +103,7 @@ Public Class MathContestForm
             AgeTextBox.Focus()
             ageAndGradeErrorMessage &= "Age must be a whole number." & vbCrLf
         End Try
+        'student is not in range or wrong data entered
         If validAgeAndGrade = False Then
             MsgBox("Student is not eligible to compete" & vbCrLf & ageAndGradeErrorMessage)
         End If
@@ -115,6 +116,7 @@ Public Class MathContestForm
     ''' <param name="activate"></param>
     Sub EnableContestControls(activate As Boolean)
         If activate Then
+            'enables the controls for the student during the contest
             SummaryButton.Enabled = True
             StartButton.Enabled = False
             ClearButton.Enabled = True
@@ -122,6 +124,7 @@ Public Class MathContestForm
             CurrentMathProblemGroupBox.Enabled = True
             StudentInfoGroupBox.Enabled = False
         Else
+            'returns to the controls for the teacher to begin a new student
             SummaryButton.Enabled = False
             StartButton.Enabled = True
             ClearButton.Enabled = False
@@ -135,6 +138,7 @@ Public Class MathContestForm
     ''' sets default text boxes and buttons
     ''' </summary>
     Sub SetDefaults()
+        'sets default text boxes, buttons, and data for new student
         AddRadioButton.Checked = True
         mathoperation = "+"
         StudentNameTextBox.Text = ""
@@ -162,9 +166,10 @@ Public Class MathContestForm
     ''' Generates two new numbers for the question
     ''' </summary>
     Sub PopulateStudentQuestion()
+        'sets new random numbers 
         Dim firstNumber As Integer = RandomNumber()
         Dim secondNumber As Integer = RandomNumber()
-
+        'assigns new numbers to text boxes
         FirstNumberTextBox.Text = firstNumber
         SecondNumberTextBox.Text = secondNumber
     End Sub
@@ -209,9 +214,10 @@ Public Class MathContestForm
         currentFirstNumber = CInt(Me.FirstNumberTextBox.Text)
         currentSecondNumber = CInt(Me.SecondNumberTextBox.Text)
 
-        'try to convert student response
         Try
+            'try to convert student response
             studentResponse = CInt(Me.StudentResponseTextBox.Text)
+            'check which operator is selected
             Select Case mathoperation
                 Case = "+"
                     correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
@@ -219,23 +225,26 @@ Public Class MathContestForm
                     correctResponse = SubtractTwoNumbers(currentFirstNumber, currentSecondNumber)
             End Select
 
-
+            'check if student answered correctly
             If correctResponse = studentResponse Then
+                'Student is correct
                 studentCorrect = True
                 returnMessage = "Correct!" & vbCrLf &
                     $"{currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}"
                 numberOfCorrectAnswers += 1
                 totalNumberofQuestions += 1
             Else
+                'Student is not correct
                 studentCorrect = False
                 returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}" &
                 vbCrLf & $"Your response: {studentResponse}"
                 totalNumberofQuestions += 1
             End If
         Catch ex As Exception
+            'Entered data is not an integer
             returnMessage = "Please enter a Whole Number"
         End Try
-
+        'message student results of their answer
         MsgBox(returnMessage)
         Return studentCorrect
     End Function
@@ -244,6 +253,7 @@ Public Class MathContestForm
     ''' Messages the user their score and totals
     ''' </summary>
     Sub SummaryMessage()
+        'creates message with number of correct and questions asked
         Dim summaryMessage As String
         summaryMessage = $"{StudentNameTextBox.Text} got {numberOfCorrectAnswers} out of {totalNumberofQuestions} correct."
         MsgBox(summaryMessage)
@@ -275,28 +285,29 @@ Public Class MathContestForm
     End Sub
 
     Private Sub AddRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged
+        'generates new numbers and sets the add operation
         PopulateStudentQuestion()
         mathoperation = "+"
     End Sub
 
     Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
+        'generates new number and sets the subtract operation
         PopulateStudentQuestion()
         mathoperation = "-"
     End Sub
 
     Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
+        'generates new numbers.  Need to deal with double point for multiplication
         PopulateStudentQuestion()
     End Sub
 
     Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
+        'generates new numbers. Need to deal with double point for division
         PopulateStudentQuestion()
     End Sub
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
-        If CheckStudentResponse() Then
-        Else
-        End If
-
+        CheckStudentResponse()
         PopulateStudentQuestion()
     End Sub
 
