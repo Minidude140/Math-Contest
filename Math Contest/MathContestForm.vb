@@ -20,11 +20,13 @@
 '[]solve problem compare to student response --> 
 '[]*add, *subtract, multiply, divide functions
 '[*]message user their result
-'[]keep track of number of questions and correct responses
+'[*]keep track of number of questions and correct responses
 
 
 Public Class MathContestForm
     Dim mathoperation As String
+    Dim numberOfCorrectAnswers As Integer
+    Dim totalNumberofQuestions As Integer
 
     'Custom Methods
 
@@ -134,12 +136,15 @@ Public Class MathContestForm
     ''' </summary>
     Sub SetDefaults()
         AddRadioButton.Checked = True
+        mathoperation = "+"
         StudentNameTextBox.Text = ""
         AgeTextBox.Text = ""
         GradeTextBox.Text = ""
         StudentResponseTextBox.Text = ""
         FirstNumberTextBox.Text = ""
         SecondNumberTextBox.Text = ""
+        numberOfCorrectAnswers = 0
+        totalNumberofQuestions = 0
     End Sub
 
     ''' <summary>
@@ -232,6 +237,15 @@ Public Class MathContestForm
         Return studentCorrect
     End Function
 
+    ''' <summary>
+    ''' Messages the user their score and totals
+    ''' </summary>
+    Sub SummaryMessage()
+        Dim summaryMessage As String
+        summaryMessage = $"{StudentNameTextBox.Text} got {numberOfCorrectAnswers} out of {totalNumberofQuestions} correct."
+        MsgBox(summaryMessage)
+    End Sub
+
     'Event Handlers
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
@@ -277,11 +291,16 @@ Public Class MathContestForm
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         If CheckStudentResponse() Then
-            'MsgBox("Correct!")
+            numberOfCorrectAnswers += 1
+            totalNumberofQuestions += 1
         Else
-            'MsgBox("Nope!")
+            totalNumberofQuestions += 1
         End If
 
         PopulateStudentQuestion()
+    End Sub
+
+    Private Sub SummaryButton_Click(sender As Object, e As EventArgs) Handles SummaryButton.Click
+        SummaryMessage()
     End Sub
 End Class
