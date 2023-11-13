@@ -217,7 +217,8 @@ Public Class MathContestForm
 
             If correctResponse = studentResponse Then
                 studentCorrect = True
-                returnMessage = "Correct!"
+                returnMessage = "Correct!" & vbCrLf &
+                    $"{currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}"
             Else
                 studentCorrect = False
                 returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}" &
