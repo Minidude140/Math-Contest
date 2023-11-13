@@ -223,7 +223,7 @@ Public Class MathContestForm
     End Function
 
     ''' <summary>
-    ''' Checks is the student's response is correct returns true if yes **ONlY ADDS RIGHT NOW**
+    ''' Checks is the student's response is correct returns true if yes
     ''' </summary>
     ''' <returns></returns>
     Function CheckStudentResponse() As Boolean
@@ -247,9 +247,11 @@ Public Class MathContestForm
                     correctResponse = AddTwoNumbers(currentFirstNumber, currentSecondNumber)
                 Case = "-"
                     correctResponse = SubtractTwoNumbers(currentFirstNumber, currentSecondNumber)
+                Case = "*"
+                    correctResponse = MultiplyTwoNumbers(currentFirstNumber, currentSecondNumber)
             End Select
 
-            'check if student answered correctly
+            'check if student answered correctly and answer accordingly
             If correctResponse = studentResponse Then
                 'Student is correct
                 studentCorrect = True
@@ -321,8 +323,9 @@ Public Class MathContestForm
     End Sub
 
     Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
-        'generates new numbers.  Need to deal with double point for multiplication
+        'generates new numbers.
         PopulateStudentQuestion()
+        mathoperation = "*"
     End Sub
 
     Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
