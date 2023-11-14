@@ -16,11 +16,13 @@
 '[~]Generate Two Random number sub
 '[~]Clear math problem numbers when setdefaults
 '[~]Re Generate new numbers when: ~StartButton Clicked, ~SubmitButton Clicked, ~New Operator selected
-'[]submit button handler should:
-'[]solve problem compare to student response --> 
-'[]*add, *subtract, *multiply, divide functions
-'[*]message user their result
-'[*]keep track of number of questions and correct responses
+'[~]submit button handler should:
+'[~]solve problem compare to student response --> 
+'[~]*add, *subtract, *multiply, *divide functions
+'[~]message user their result
+'[~]keep track of number of questions and correct responses
+'[]Need to limit number of significant digits in correctResponseDouble
+'[]Try to combine the double point user prompt for correct/incorrect answer and integer Prompt
 
 
 Public Class MathContestForm
