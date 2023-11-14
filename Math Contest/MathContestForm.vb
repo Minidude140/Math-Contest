@@ -330,29 +330,10 @@ Public Class MathContestForm
                                                                                              SubtractRadioButton.CheckedChanged,
                                                                                              MultiplyRadioButton.CheckedChanged,
                                                                                              DivideRadioButton.CheckedChanged
-        'generates new numbers and sets the add operation
-        'PopulateStudentQuestion()
-        'math operation = "+"
+        'generates new numbers and sets the math operation
         CheckOperator()
         PopulateStudentQuestion()
     End Sub
-
-    'Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
-    '    'generates new number and sets the subtract operation
-    '    PopulateStudentQuestion()
-    '    mathoperation = "-"
-    'End Sub
-
-    'Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
-    '    'generates new numbers.
-    '    PopulateStudentQuestion()
-    '    mathoperation = "*"
-    'End Sub
-
-    'Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
-    '    'generates new numbers. Need to deal with double point for division
-    '    PopulateStudentQuestion()
-    'End Sub
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         CheckStudentResponse()
