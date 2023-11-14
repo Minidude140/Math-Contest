@@ -288,6 +288,9 @@ Public Class MathContestForm
         MsgBox(summaryMessage)
     End Sub
 
+    ''' <summary>
+    ''' Checks the Math Type Radio button selection and sets the mathOperator to the correct type
+    ''' </summary>
     Sub CheckOperator()
         Select Case True
             Case AddRadioButton.Checked
