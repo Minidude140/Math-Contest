@@ -233,6 +233,9 @@ Public Class MathContestForm
         Dim studentResponse As Integer
         Dim studentCorrect As Boolean
         Dim returnMessage As String = ""
+        'Dim double points for division problems
+        Dim studentResponseDouble As Double
+        Dim correctResponseDouble As Double
 
         'sets the first and second numbers
         currentFirstNumber = CInt(Me.FirstNumberTextBox.Text)
@@ -240,7 +243,11 @@ Public Class MathContestForm
 
         Try
             'try to convert student response
-            studentResponse = CInt(Me.StudentResponseTextBox.Text)
+            If mathoperation <> "/" Then
+                studentResponse = CInt(Me.StudentResponseTextBox.Text)
+            Else
+                studentResponseDouble = CDbl(Me.StudentResponseTextBox.Text)
+            End If
             'check which operator is selected
             Select Case mathoperation
                 Case = "+"
@@ -251,23 +258,41 @@ Public Class MathContestForm
                     correctResponse = MultiplyTwoNumbers(currentFirstNumber, currentSecondNumber)
                 Case = "/"
                     'need to convert to doubles to deal with decimal
-
+                    correctResponseDouble = DivideTwoNumbers(currentFirstNumber, currentSecondNumber)
             End Select
-
             'check if student answered correctly and answer accordingly
-            If correctResponse = studentResponse Then
-                'Student is correct
-                studentCorrect = True
-                returnMessage = "Correct!" & vbCrLf &
+            If mathoperation <> "/" Then
+                'Respond without Double Points
+                If correctResponse = studentResponse Then
+                    'Student is correct
+                    studentCorrect = True
+                    returnMessage = "Correct!" & vbCrLf &
                     $"{currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}"
-                numberOfCorrectAnswers += 1
-                totalNumberofQuestions += 1
-            Else
-                'Student is not correct
-                studentCorrect = False
-                returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}" &
+                    numberOfCorrectAnswers += 1
+                    totalNumberofQuestions += 1
+                Else
+                    'Student is not correct
+                    studentCorrect = False
+                    returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponse}" &
                 vbCrLf & $"Your response: {studentResponse}"
-                totalNumberofQuestions += 1
+                    totalNumberofQuestions += 1
+                End If
+            Else
+                'Respond with double points
+                If correctResponseDouble = studentResponseDouble Then
+                    'Student is correct
+                    studentCorrect = True
+                    returnMessage = "Correct!" & vbCrLf &
+                    $"{currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponseDouble}"
+                    numberOfCorrectAnswers += 1
+                    totalNumberofQuestions += 1
+                Else
+                    'Student is not correct
+                    studentCorrect = False
+                    returnMessage = $"Sorry, {currentFirstNumber} {mathoperation} {currentSecondNumber} = {correctResponseDouble}" &
+                vbCrLf & $"Your response: {studentResponseDouble}"
+                    totalNumberofQuestions += 1
+                End If
             End If
         Catch ex As Exception
             'Entered data is not an integer
@@ -300,7 +325,7 @@ Public Class MathContestForm
             Case MultiplyRadioButton.Checked
                 mathoperation = "*"
             Case DivideRadioButton.Checked
-                mathoperation = "\"
+                mathoperation = "/"
         End Select
     End Sub
 
