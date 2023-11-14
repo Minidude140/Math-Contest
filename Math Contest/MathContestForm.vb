@@ -288,6 +288,19 @@ Public Class MathContestForm
         MsgBox(summaryMessage)
     End Sub
 
+    Sub CheckOperator()
+        Select Case True
+            Case AddRadioButton.Checked
+                mathoperation = "+"
+            Case SubtractRadioButton.Checked
+                mathoperation = "-"
+            Case MultiplyRadioButton.Checked
+                mathoperation = "*"
+            Case DivideRadioButton.Checked
+                mathoperation = "\"
+        End Select
+    End Sub
+
     'Event Handlers
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
@@ -313,28 +326,33 @@ Public Class MathContestForm
         EnableContestControls(False)
     End Sub
 
-    Private Sub AddRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged
+    Private Sub MathOperatorChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged,
+                                                                                             SubtractRadioButton.CheckedChanged,
+                                                                                             MultiplyRadioButton.CheckedChanged,
+                                                                                             DivideRadioButton.CheckedChanged
         'generates new numbers and sets the add operation
+        'PopulateStudentQuestion()
+        'math operation = "+"
+        CheckOperator()
         PopulateStudentQuestion()
-        mathoperation = "+"
     End Sub
 
-    Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
-        'generates new number and sets the subtract operation
-        PopulateStudentQuestion()
-        mathoperation = "-"
-    End Sub
+    'Private Sub SubtractRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles SubtractRadioButton.CheckedChanged
+    '    'generates new number and sets the subtract operation
+    '    PopulateStudentQuestion()
+    '    mathoperation = "-"
+    'End Sub
 
-    Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
-        'generates new numbers.
-        PopulateStudentQuestion()
-        mathoperation = "*"
-    End Sub
+    'Private Sub MultiplyRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles MultiplyRadioButton.CheckedChanged
+    '    'generates new numbers.
+    '    PopulateStudentQuestion()
+    '    mathoperation = "*"
+    'End Sub
 
-    Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
-        'generates new numbers. Need to deal with double point for division
-        PopulateStudentQuestion()
-    End Sub
+    'Private Sub DivideRadioButton_CheckedChanged(sender As Object, e As EventArgs) Handles DivideRadioButton.CheckedChanged
+    '    'generates new numbers. Need to deal with double point for division
+    '    PopulateStudentQuestion()
+    'End Sub
 
     Private Sub SubmitButton_Click(sender As Object, e As EventArgs) Handles SubmitButton.Click
         CheckStudentResponse()
