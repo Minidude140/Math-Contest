@@ -221,8 +221,35 @@ Public Class MathContestForm
     Function DivideTwoNumbers(first As Double, second As Double) As Double
         Dim quotient As Double
         quotient = first / second
+        quotient = System.Math.Round(quotient, 3, MidpointRounding.ToEven)
         Return quotient
     End Function
+
+    ''' <summary>
+    ''' Messages the user their score and totals
+    ''' </summary>
+    Sub SummaryMessage()
+        'creates message with number of correct and questions asked
+        Dim summaryMessage As String
+        summaryMessage = $"{StudentNameTextBox.Text} got {numberOfCorrectAnswers} out of {totalNumberofQuestions} correct."
+        MsgBox(summaryMessage)
+    End Sub
+
+    ''' <summary>
+    ''' Checks the Math Type Radio button selection and sets the mathOperator to the correct type
+    ''' </summary>
+    Sub CheckOperator()
+        Select Case True
+            Case AddRadioButton.Checked
+                mathoperation = "+"
+            Case SubtractRadioButton.Checked
+                mathoperation = "-"
+            Case MultiplyRadioButton.Checked
+                mathoperation = "*"
+            Case DivideRadioButton.Checked
+                mathoperation = "/"
+        End Select
+    End Sub
 
     ''' <summary>
     ''' Checks is the student's response is correct returns true if yes
@@ -305,32 +332,6 @@ Public Class MathContestForm
         Return studentCorrect
     End Function
 
-    ''' <summary>
-    ''' Messages the user their score and totals
-    ''' </summary>
-    Sub SummaryMessage()
-        'creates message with number of correct and questions asked
-        Dim summaryMessage As String
-        summaryMessage = $"{StudentNameTextBox.Text} got {numberOfCorrectAnswers} out of {totalNumberofQuestions} correct."
-        MsgBox(summaryMessage)
-    End Sub
-
-    ''' <summary>
-    ''' Checks the Math Type Radio button selection and sets the mathOperator to the correct type
-    ''' </summary>
-    Sub CheckOperator()
-        Select Case True
-            Case AddRadioButton.Checked
-                mathoperation = "+"
-            Case SubtractRadioButton.Checked
-                mathoperation = "-"
-            Case MultiplyRadioButton.Checked
-                mathoperation = "*"
-            Case DivideRadioButton.Checked
-                mathoperation = "/"
-        End Select
-    End Sub
-
     'Event Handlers
     Private Sub MathContestForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         SetDefaults()
@@ -357,9 +358,9 @@ Public Class MathContestForm
     End Sub
 
     Private Sub MathOperatorChanged(sender As Object, e As EventArgs) Handles AddRadioButton.CheckedChanged,
-                                                                                             SubtractRadioButton.CheckedChanged,
-                                                                                             MultiplyRadioButton.CheckedChanged,
-                                                                                             DivideRadioButton.CheckedChanged
+                                                                            SubtractRadioButton.CheckedChanged,
+                                                                            MultiplyRadioButton.CheckedChanged,
+                                                                            DivideRadioButton.CheckedChanged
         'generates new numbers and sets the math operation
         CheckOperator()
         PopulateStudentQuestion()
