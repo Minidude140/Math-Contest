@@ -50,6 +50,7 @@ Partial Class MathContestForm
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SignificantDigitsLabel = New System.Windows.Forms.Label()
+        Me.EquationLabel = New System.Windows.Forms.Label()
         Me.StudentInfoGroupBox.SuspendLayout()
         Me.CurrentMathProblemGroupBox.SuspendLayout()
         Me.MathProblemTypeGroupBox.SuspendLayout()
@@ -125,6 +126,7 @@ Partial Class MathContestForm
         '
         'CurrentMathProblemGroupBox
         '
+        Me.CurrentMathProblemGroupBox.Controls.Add(Me.EquationLabel)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.SignificantDigitsLabel)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.SubmitButton)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.StudentResponseLabel)
@@ -135,7 +137,7 @@ Partial Class MathContestForm
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.FirstNumberTextBox)
         Me.CurrentMathProblemGroupBox.Location = New System.Drawing.Point(31, 135)
         Me.CurrentMathProblemGroupBox.Name = "CurrentMathProblemGroupBox"
-        Me.CurrentMathProblemGroupBox.Size = New System.Drawing.Size(332, 291)
+        Me.CurrentMathProblemGroupBox.Size = New System.Drawing.Size(332, 303)
         Me.CurrentMathProblemGroupBox.TabIndex = 1
         Me.CurrentMathProblemGroupBox.TabStop = False
         Me.CurrentMathProblemGroupBox.Text = "Current Math Problem"
@@ -143,7 +145,7 @@ Partial Class MathContestForm
         '
         'SubmitButton
         '
-        Me.SubmitButton.Location = New System.Drawing.Point(16, 234)
+        Me.SubmitButton.Location = New System.Drawing.Point(16, 250)
         Me.SubmitButton.Name = "SubmitButton"
         Me.SubmitButton.Size = New System.Drawing.Size(278, 39)
         Me.SubmitButton.TabIndex = 6
@@ -154,7 +156,7 @@ Partial Class MathContestForm
         'StudentResponseLabel
         '
         Me.StudentResponseLabel.AutoSize = True
-        Me.StudentResponseLabel.Location = New System.Drawing.Point(13, 181)
+        Me.StudentResponseLabel.Location = New System.Drawing.Point(13, 197)
         Me.StudentResponseLabel.Name = "StudentResponseLabel"
         Me.StudentResponseLabel.Size = New System.Drawing.Size(125, 17)
         Me.StudentResponseLabel.TabIndex = 5
@@ -180,7 +182,7 @@ Partial Class MathContestForm
         '
         'StudentResponseTextBox
         '
-        Me.StudentResponseTextBox.Location = New System.Drawing.Point(18, 201)
+        Me.StudentResponseTextBox.Location = New System.Drawing.Point(18, 217)
         Me.StudentResponseTextBox.Name = "StudentResponseTextBox"
         Me.StudentResponseTextBox.Size = New System.Drawing.Size(277, 22)
         Me.StudentResponseTextBox.TabIndex = 2
@@ -325,11 +327,21 @@ Partial Class MathContestForm
         'SignificantDigitsLabel
         '
         Me.SignificantDigitsLabel.AutoSize = True
-        Me.SignificantDigitsLabel.Location = New System.Drawing.Point(35, 149)
+        Me.SignificantDigitsLabel.Location = New System.Drawing.Point(35, 172)
         Me.SignificantDigitsLabel.Name = "SignificantDigitsLabel"
         Me.SignificantDigitsLabel.Size = New System.Drawing.Size(228, 17)
         Me.SignificantDigitsLabel.TabIndex = 7
         Me.SignificantDigitsLabel.Text = "Please round to 3 Significant Digits"
+        '
+        'EquationLabel
+        '
+        Me.EquationLabel.AutoSize = True
+        Me.EquationLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EquationLabel.Location = New System.Drawing.Point(101, 134)
+        Me.EquationLabel.Name = "EquationLabel"
+        Me.EquationLabel.Size = New System.Drawing.Size(104, 29)
+        Me.EquationLabel.TabIndex = 8
+        Me.EquationLabel.Text = "1 + 1 = 2"
         '
         'MathContestForm
         '
@@ -342,6 +354,8 @@ Partial Class MathContestForm
         Me.Controls.Add(Me.MathProblemTypeGroupBox)
         Me.Controls.Add(Me.CurrentMathProblemGroupBox)
         Me.Controls.Add(Me.StudentInfoGroupBox)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.MaximizeBox = False
         Me.Name = "MathContestForm"
         Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -384,4 +398,5 @@ Partial Class MathContestForm
     Friend WithEvents SubmitButton As Button
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents SignificantDigitsLabel As Label
+    Friend WithEvents EquationLabel As Label
 End Class

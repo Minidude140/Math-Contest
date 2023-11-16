@@ -21,7 +21,7 @@
 '[~]*add, *subtract, *multiply, *divide functions
 '[~]message user their result
 '[~]keep track of number of questions and correct responses
-'[]Need to limit number of significant digits in correctResponseDouble
+'[~]Need to limit number of significant digits in correctResponseDouble
 '[]Try to combine the double point user prompt for correct/incorrect answer and integer Prompt
 
 
@@ -149,6 +149,7 @@ Public Class MathContestForm
         StudentResponseTextBox.Text = ""
         FirstNumberTextBox.Text = ""
         SecondNumberTextBox.Text = ""
+        EquationLabel.Text = ""
         numberOfCorrectAnswers = 0
         totalNumberofQuestions = 0
     End Sub
@@ -174,6 +175,7 @@ Public Class MathContestForm
         'assigns new numbers to text boxes
         FirstNumberTextBox.Text = firstNumber
         SecondNumberTextBox.Text = secondNumber
+        EquationLabel.Text = $"{firstNumber} {mathoperation} {secondNumber} = ?"
     End Sub
 
     ''' <summary>
