@@ -49,6 +49,7 @@ Partial Class MathContestForm
         Me.StartButton = New System.Windows.Forms.Button()
         Me.ExitButton = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SignificantDigitsLabel = New System.Windows.Forms.Label()
         Me.StudentInfoGroupBox.SuspendLayout()
         Me.CurrentMathProblemGroupBox.SuspendLayout()
         Me.MathProblemTypeGroupBox.SuspendLayout()
@@ -124,6 +125,7 @@ Partial Class MathContestForm
         '
         'CurrentMathProblemGroupBox
         '
+        Me.CurrentMathProblemGroupBox.Controls.Add(Me.SignificantDigitsLabel)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.SubmitButton)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.StudentResponseLabel)
         Me.CurrentMathProblemGroupBox.Controls.Add(Me.SecondNumberLabel)
@@ -152,7 +154,7 @@ Partial Class MathContestForm
         'StudentResponseLabel
         '
         Me.StudentResponseLabel.AutoSize = True
-        Me.StudentResponseLabel.Location = New System.Drawing.Point(13, 166)
+        Me.StudentResponseLabel.Location = New System.Drawing.Point(13, 181)
         Me.StudentResponseLabel.Name = "StudentResponseLabel"
         Me.StudentResponseLabel.Size = New System.Drawing.Size(125, 17)
         Me.StudentResponseLabel.TabIndex = 5
@@ -161,7 +163,7 @@ Partial Class MathContestForm
         'SecondNumberLabel
         '
         Me.SecondNumberLabel.AutoSize = True
-        Me.SecondNumberLabel.Location = New System.Drawing.Point(15, 111)
+        Me.SecondNumberLabel.Location = New System.Drawing.Point(15, 82)
         Me.SecondNumberLabel.Name = "SecondNumberLabel"
         Me.SecondNumberLabel.Size = New System.Drawing.Size(110, 17)
         Me.SecondNumberLabel.TabIndex = 4
@@ -170,7 +172,7 @@ Partial Class MathContestForm
         'FirstNumberLabel
         '
         Me.FirstNumberLabel.AutoSize = True
-        Me.FirstNumberLabel.Location = New System.Drawing.Point(15, 51)
+        Me.FirstNumberLabel.Location = New System.Drawing.Point(15, 22)
         Me.FirstNumberLabel.Name = "FirstNumberLabel"
         Me.FirstNumberLabel.Size = New System.Drawing.Size(89, 17)
         Me.FirstNumberLabel.TabIndex = 3
@@ -178,7 +180,7 @@ Partial Class MathContestForm
         '
         'StudentResponseTextBox
         '
-        Me.StudentResponseTextBox.Location = New System.Drawing.Point(18, 186)
+        Me.StudentResponseTextBox.Location = New System.Drawing.Point(18, 201)
         Me.StudentResponseTextBox.Name = "StudentResponseTextBox"
         Me.StudentResponseTextBox.Size = New System.Drawing.Size(277, 22)
         Me.StudentResponseTextBox.TabIndex = 2
@@ -186,7 +188,7 @@ Partial Class MathContestForm
         '
         'SecondNumberTextBox
         '
-        Me.SecondNumberTextBox.Location = New System.Drawing.Point(18, 131)
+        Me.SecondNumberTextBox.Location = New System.Drawing.Point(18, 102)
         Me.SecondNumberTextBox.Name = "SecondNumberTextBox"
         Me.SecondNumberTextBox.ReadOnly = True
         Me.SecondNumberTextBox.Size = New System.Drawing.Size(284, 22)
@@ -196,7 +198,7 @@ Partial Class MathContestForm
         '
         'FirstNumberTextBox
         '
-        Me.FirstNumberTextBox.Location = New System.Drawing.Point(18, 71)
+        Me.FirstNumberTextBox.Location = New System.Drawing.Point(18, 42)
         Me.FirstNumberTextBox.Name = "FirstNumberTextBox"
         Me.FirstNumberTextBox.ReadOnly = True
         Me.FirstNumberTextBox.Size = New System.Drawing.Size(284, 22)
@@ -320,6 +322,15 @@ Partial Class MathContestForm
         Me.ToolTip1.SetToolTip(Me.ExitButton, "Exit the Program")
         Me.ExitButton.UseVisualStyleBackColor = True
         '
+        'SignificantDigitsLabel
+        '
+        Me.SignificantDigitsLabel.AutoSize = True
+        Me.SignificantDigitsLabel.Location = New System.Drawing.Point(35, 149)
+        Me.SignificantDigitsLabel.Name = "SignificantDigitsLabel"
+        Me.SignificantDigitsLabel.Size = New System.Drawing.Size(228, 17)
+        Me.SignificantDigitsLabel.TabIndex = 7
+        Me.SignificantDigitsLabel.Text = "Please round to 3 Significant Digits"
+        '
         'MathContestForm
         '
         Me.AcceptButton = Me.StartButton
@@ -372,4 +383,5 @@ Partial Class MathContestForm
     Friend WithEvents ExitButton As Button
     Friend WithEvents SubmitButton As Button
     Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents SignificantDigitsLabel As Label
 End Class

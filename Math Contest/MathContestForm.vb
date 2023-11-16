@@ -242,12 +242,16 @@ Public Class MathContestForm
         Select Case True
             Case AddRadioButton.Checked
                 mathoperation = "+"
+                SignificantDigitsLabel.Visible = False
             Case SubtractRadioButton.Checked
                 mathoperation = "-"
+                SignificantDigitsLabel.Visible = False
             Case MultiplyRadioButton.Checked
                 mathoperation = "*"
+                SignificantDigitsLabel.Visible = False
             Case DivideRadioButton.Checked
                 mathoperation = "/"
+                SignificantDigitsLabel.Visible = True
         End Select
     End Sub
 
